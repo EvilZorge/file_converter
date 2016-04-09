@@ -1,0 +1,1 @@
+@mainApp = angular.module('mainApp', [])
