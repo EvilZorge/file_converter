@@ -11,10 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160409190702) do
+ActiveRecord::Schema.define(version: 20160409201809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "extensions", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.integer  "format_id",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "extensions", ["format_id"], name: "index_extensions_on_format_id", using: :btree
+
+  create_table "formats", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",              default: "", null: false
