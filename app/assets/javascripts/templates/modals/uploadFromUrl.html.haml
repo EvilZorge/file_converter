@@ -1,0 +1,12 @@
+.modal-header
+  %h3.modal-title Add file by URL
+.modal-body
+  %form(name="uploadUrlForm")
+    %div.form-group
+      .form-group(ng-class="{ 'has-error': uploadUrlForm.url.$invalid }")
+        %input.form-control(type='url' name="url" ng-model="url" placeholder="http://...")
+        %span(class="control-label" ng-show="uploadUrlForm.url.$invalid") Not valid url!
+.modal-footer
+  %button.btn.btn-primary(ng-click="ok()" ng-disabled="!url || uploadUrlForm.url.$invalid") Submit
+  %button.btn.btn-warning(ng-click="cancel()") Cancel
+

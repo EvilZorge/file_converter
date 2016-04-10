@@ -15,5 +15,10 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require angular
+//= require angularjs-file-upload
+//= require angular-ui-bootstrap
+//= require angular-ui-bootstrap-tpls
+//= require angular-rails-templates
+//= require_tree ./templates
 //= require main_app
 //= require_tree .

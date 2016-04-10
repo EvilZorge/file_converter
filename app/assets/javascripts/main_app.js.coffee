@@ -1,1 +1,1 @@
-@mainApp = angular.module('mainApp', [])
+@mainApp = angular.module('mainApp', ['ui.bootstrap', 'angularFileUpload', 'templates'])

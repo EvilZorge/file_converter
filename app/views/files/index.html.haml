@@ -1,2 +1,30 @@
 %div(ng-controller="FileCtrl")
-  {{text}}
+  %div.row
+    %div.buttons-row(class="col-md-8 col-md-offset-2")
+      %input#file-uploader(type="file" nv-file-select uploader="uploader" multiple)
+      %button.btn.btn-primary(ng-click="uploadFile()") Choose From Computer
+      %button.btn.btn-primary(ng-click="openUploadFromUrl()") Choose From Url
+      %button.btn.btn-primary() Choose From Dropbox
+      %button.btn.btn-primary() Choose From Google Drive
+  %div.row
+    %div(class="col-md-8 col-md-offset-2" style="text-align: center;")
+      %h3 or drag & drop files on this zone
+
+  %div.row
+    %div(class="col-md-8 col-md-offset-2 drag-drop" nv-file-drop uploader="uploader")
+      %div.file-table(ng-repeat="item in uploader.queue")
+        %div.file-table-cell.filename
+          {{ item.file.name }}
+        %div.file-table-cell.type
+          {{ item.file.type | cut:true:40:'...' }}
+        %div.file-table-cell.size
+          {{ item.file.size }}
+        %div.file-table-cell.status(ng-show="item.file.status")
+          {{ item.file.status }}
+        %div.file-table-cell.download-action(ng-show="item.file.download_url")
+          %a.btn.btn-success(href="{{item.file.download_url}}") Download
+        %div.file-table-cell.remove-action
+          %span(class="fa fa-times cursor-pointer" aria-hidden="true" ng-click="uploader.removeFromQueue(item)")
+      %button(ng-click="test()") test
+    %div(class="col-md-2 col-md-offset-5")
+      %button.btn.btn-danger(ng-click="uploader.uploadAll()" ng-hide="uploader.queue.length == 0" ng-disabled="uploader.queue.length == 0") Convert All

@@ -1,0 +1,49 @@
+.file-table {
+  display: table;
+  width: 100%;
+  padding: 8px 10px;
+  border-bottom: solid #d9d9d9 1px;
+}
+
+.file-table-cell {
+  display: table-cell;
+  overflow: hidden;
+  height: 25px;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+
+  &.filename {
+    width: 40%;
+    min-width: 90px;
+    white-space: nowrap;
+    padding: 5px;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+  }
+
+  &.type {
+    min-width: 90px;
+    max-width: 100px;
+    width: 100px;
+    white-space: nowrap;
+  }
+
+  &.size {
+    width: 50px;
+  }
+
+  &.status {
+    width: 30px;
+  }
+
+  &.download-action {
+    padding-left: 10px;
+    text-align: right;
+    width: 93px;
+  }
+
+  &.remove-action {
+    text-align: right;
+    width: 15px;
+  }
+}

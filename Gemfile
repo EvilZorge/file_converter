@@ -22,10 +22,21 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'angularjs-rails'
+gem 'angularjs-file-upload-rails', '~> 2.2.0'
+gem 'angular-ui-bootstrap-rails'
+gem 'angular-rails-templates'
+
 gem "haml-rails", "~> 0.9"
+
 gem 'devise'
 gem 'devise-bootstrap-views'
 gem "twitter-bootstrap-rails"
+
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem "rmagick", "~>2.13.2", :require => 'RMagick'
+
+gem 'active_model_serializers'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
