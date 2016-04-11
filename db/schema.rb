@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160409211949) do
+ActiveRecord::Schema.define(version: 20160410235346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 20160409211949) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
   end
+
+  add_index "converted_files", ["user_id"], name: "index_converted_files_on_user_id", using: :btree
+
+  create_table "extension_associations", force: :cascade do |t|
+    t.integer "extension_id",           null: false
+    t.integer "converted_extension_id", null: false
+  end
+
+  add_index "extension_associations", ["converted_extension_id"], name: "index_extension_associations_on_converted_extension_id", using: :btree
+  add_index "extension_associations", ["extension_id"], name: "index_extension_associations_on_extension_id", using: :btree
 
   create_table "extensions", force: :cascade do |t|
     t.string   "name",       null: false

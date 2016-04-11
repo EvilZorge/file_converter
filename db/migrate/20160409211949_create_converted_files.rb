@@ -6,5 +6,7 @@ class CreateConvertedFiles < ActiveRecord::Migration
       t.references :user
       t.timestamps null: false
     end
+
+    add_index :converted_files, :user_id
   end
 end
