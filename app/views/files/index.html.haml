@@ -19,6 +19,8 @@
           {{ item.file.type | cut:true:40:'...' }}
         %div.file-table-cell.size
           {{ item.file.size }}
+        %div.file-table-cell.select-format(ng-show="item.file.formats")
+          %select(ng-model="item.file.format_to" ng-options="format for format in item.file.formats")
         %div.file-table-cell.status(ng-show="item.file.status")
           {{ item.file.status }}
         %div.file-table-cell.download-action(ng-show="item.file.download_url")

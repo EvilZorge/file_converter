@@ -1,5 +1,4 @@
 @mainApp.controller 'FileCtrl', ['$scope', '$http', 'FileUploader', '$uibModal', ($scope, $http, FileUploader, $uibModal) ->
-  # $scope.uploader = new FileUploader({url: '/files/upload', removeAfterUpload: true});
   $scope.uploader = new FileUploader(url: '/files/upload')
 
   $scope.uploader.onCompleteItem = (item, response, status, headers) ->
@@ -8,6 +7,17 @@
       item.file.download_url = response.file_upload.download_url
     else if status == 406
       item.file.status = 'Error'
+
+  $scope.uploader.onAfterAddingFile = (item) ->
+    $http.get('/formats', params: { format: item.file.type })
+    .success (response) ->
+      item.file.formats = response.formats
+      item.file.format_to = response.formats[0]
+    .error (response) ->
+     $scope.uploader.removeFromQueue(item)
+
+  $scope.uploader.onBeforeUploadItem = (item) ->
+    item.formData.push(format_to: item.file.format_to)
 
   $scope.uploadFile = ->
     document.getElementById('file-uploader').click()
