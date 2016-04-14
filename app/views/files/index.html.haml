@@ -4,8 +4,8 @@
       %input#file-uploader(type="file" nv-file-select uploader="uploader" multiple)
       %button.btn.btn-primary(ng-click="uploadFile()") Choose From Computer
       %button.btn.btn-primary(ng-click="openUploadFromUrl()") Choose From Url
-      %button.btn.btn-primary() Choose From Dropbox
-      %button.btn.btn-primary() Choose From Google Drive
+      %dropbox-chooser
+      %google-drive-chooser
   %div.row
     %div(class="col-md-8 col-md-offset-2" style="text-align: center;")
       %h3 or drag & drop files on this zone

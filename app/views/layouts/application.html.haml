@@ -5,6 +5,9 @@
     %title FileConverter
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = javascript_include_tag 'http://apis.google.com/js/client.js'
+    = javascript_include_tag 'http://apis.google.com/js/api.js'
+    = javascript_include_tag 'https://www.dropbox.com/static/api/2/dropins.js', 'id': 'dropboxjs', 'data-app-key': 'yz2smng2q90mc3e'
     = csrf_meta_tags
   %body
     = render 'layouts/header'

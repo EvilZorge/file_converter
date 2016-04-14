@@ -14,7 +14,7 @@
       item.file.formats = response.formats
       item.file.format_to = response.formats[0]
     .error (response) ->
-     $scope.uploader.removeFromQueue(item)
+      $scope.uploader.removeFromQueue(item)
 
   $scope.uploader.onBeforeUploadItem = (item) ->
     item.formData.push(format_to: item.file.format_to)
