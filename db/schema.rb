@@ -17,11 +17,12 @@ ActiveRecord::Schema.define(version: 20160410235346) do
   enable_extension "plpgsql"
 
   create_table "converted_files", force: :cascade do |t|
-    t.string   "file",                            null: false
-    t.string   "state",      default: "uploaded", null: false
+    t.string   "file",                              null: false
+    t.string   "state",        default: "uploaded", null: false
     t.integer  "user_id"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.integer  "extension_id"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   add_index "converted_files", ["user_id"], name: "index_converted_files_on_user_id", using: :btree

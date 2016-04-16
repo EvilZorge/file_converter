@@ -6,5 +6,10 @@ Rails.application.routes.draw do
       post 'upload'
     end
   end
-  resources :formats, only: [:index]
+  resources :extensions, only: [:index]
+  resources :users, only: [] do
+    collection do
+      get 'files_history'
+    end
+  end
 end

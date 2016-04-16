@@ -1,0 +1,31 @@
+%div(ng-controller="UsersCtrl" ng-init="init('#{current_user.serialize}')")
+  %table.table.table-striped(st-table="files")
+    %thead
+      %tr
+        %th(st-sort="filename") Filename
+        %th(st-sort="format") Format
+        %th(st-sort="extension") Extension
+        %th(st-sort="created_at" st-sort-default="reverse") Created Date
+        %th(st-sort="state") State
+        %th Download
+      %tr
+        %th
+          %input.input-sm.form-control(st-search="filename" placeholder="search for filename" type="search")
+        %th
+          %input.input-sm.form-control(st-search="format" placeholder="search for format" type="search")
+        %th
+          %input.input-sm.form-control(st-search="extension" placeholder="search for extension" type="search")
+        %th
+          %input.input-sm.form-control(st-search="created_at" placeholder="search for created date" type="search")
+        %th
+          %input.input-sm.form-control(st-search="state" placeholder="search for state" type="search")
+        %th
+    %tbody
+      %tr(ng-repeat="file in files")
+        %td {{file.filename}}
+        %td {{file.format}}
+        %td {{file.extension}}
+        %td {{file.created_at | date }}
+        %td {{file.state}}
+        %td
+          %a.btn.btn-success(href="{{file.download_url}}" ng-if="file.download_url") Download

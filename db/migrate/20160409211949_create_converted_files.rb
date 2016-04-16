@@ -4,6 +4,7 @@ class CreateConvertedFiles < ActiveRecord::Migration
       t.string :file, null: false
       t.string :state, null: false, default: 'uploaded'
       t.references :user
+      t.references :extension
       t.timestamps null: false
     end
 

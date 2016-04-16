@@ -39,3 +39,12 @@ body {
   border: dotted 3px lightgray;
   box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
 }
+
+
+.st-sort-ascent:before{
+  content: '\25B2';
+}
+
+.st-sort-descent:before{
+  content: '\25BC';
+}

@@ -1,4 +1,4 @@
-@mainApp = angular.module('mainApp', ['ui.bootstrap', 'angularFileUpload', 'templates', 'lk-google-picker'])
+@mainApp = angular.module('mainApp', ['ui.bootstrap', 'angularFileUpload', 'templates', 'lk-google-picker', 'smart-table'])
 
 @mainApp.config(['lkGoogleSettingsProvider', (lkGoogleSettingsProvider) ->
 

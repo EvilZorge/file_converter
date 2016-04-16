@@ -4,4 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :validatable
 
   has_many :converted_files
+
+  def serialize
+    UserSerializer.new(self, root: false).to_json
+  end
 end

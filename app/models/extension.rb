@@ -5,4 +5,5 @@ class Extension < ActiveRecord::Base
   has_many :extensions, through: :extension_associations
   has_many :inverse_extension_associations, class_name: "ExtensionAssociation", foreign_key: "converted_extension_id"
   has_many :inverse_extension, through: :inverse_extension_associations, source: :extension
+  has_many :converted_files
 end

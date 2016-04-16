@@ -1,4 +1,4 @@
-%div(ng-controller="FileCtrl")
+%div(ng-controller="FilesCtrl")
   %div.row
     %div.buttons-row(class="col-md-8 col-md-offset-2")
       %input#file-uploader(type="file" nv-file-select uploader="uploader" multiple)
@@ -19,8 +19,8 @@
           {{ item.file.type | cut:true:40:'...' }}
         %div.file-table-cell.size
           {{ item.file.size }}
-        %div.file-table-cell.select-format(ng-show="item.file.formats")
-          %select(ng-model="item.file.format_to" ng-options="format for format in item.file.formats")
+        %div.file-table-cell.select-format(ng-show="item.file.extensions")
+          %select.form-control(ng-model="item.file.extension_to" ng-options="format for format in item.file.extensions")
         %div.file-table-cell.status(ng-show="item.file.status")
           {{ item.file.status }}
         %div.file-table-cell.download-action(ng-show="item.file.download_url")

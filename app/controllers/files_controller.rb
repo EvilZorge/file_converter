@@ -4,7 +4,7 @@ class FilesController < ApplicationController
   end
 
   def upload
-    file = ConvertService.upload(params[:file], params[:format_to], current_user)
+    file = ConvertService.upload(params[:file], params[:extension_to], current_user) if ExtensionService.check_extension(params[:file], params[:extension_to])
     if file
       render json: file, serializer: FileUploadSerializer,  status: :ok
     else
