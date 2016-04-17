@@ -18,7 +18,7 @@
         %div.file-table-cell.type
           {{ item.file.type | cut:true:40:'...' }}
         %div.file-table-cell.size
-          {{ item.file.size }}
+          {{ item.file.size | bytes }}
         %div.file-table-cell.select-format(ng-show="item.file.extensions")
           %select.form-control(ng-model="item.file.extension_to" ng-options="format for format in item.file.extensions")
         %div.file-table-cell.status(ng-show="item.file.status")

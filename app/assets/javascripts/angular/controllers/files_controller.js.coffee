@@ -26,7 +26,7 @@
   $scope.uploadFileFromUrl = (url) ->
     $http.get('/files/file_info', params: { url: url })
       .success (response) ->
-        file = new File([], response.name, response)
+        file = new File([response], response.name, response)
         $scope.uploader.addToQueue(file, { uploaded_url: url})
       .error (response) ->
 
