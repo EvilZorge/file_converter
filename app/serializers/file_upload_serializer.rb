@@ -1,9 +1,5 @@
 class FileUploadSerializer < ActiveModel::Serializer
-  attributes :download_url, :state
-
-  def download_url
-    object.file.url
-  end
+  attributes :state
 
   def state
     object.state

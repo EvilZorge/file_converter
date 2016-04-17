@@ -24,6 +24,6 @@ module ExtensionService
   def find_extensions(from_extension)
     return if from_extension.nil?
     extension = Extension.find_by_name(from_extension)
-    extension ? extension.inverse_extension.pluck(:name) : nil
+    extension ? extension.converted_extensions.pluck(:name) : nil
   end
 end

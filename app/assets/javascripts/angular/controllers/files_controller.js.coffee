@@ -18,9 +18,17 @@
 
   $scope.uploader.onBeforeUploadItem = (item) ->
     item.formData.push(extension_to: item.file.extension_to)
+    item.formData.push(uploaded_url: item.uploaded_url) if item.uploaded_url
 
   $scope.uploadFile = ->
     document.getElementById('file-uploader').click()
+
+  $scope.uploadFileFromUrl = (url) ->
+    $http.get('/files/file_info', params: { url: url })
+      .success (response) ->
+        file = new File([], response.name, response)
+        $scope.uploader.addToQueue(file, { uploaded_url: url})
+      .error (response) ->
 
   $scope.openUploadFromUrl = ->
     modalInstance = $uibModal.open(
@@ -31,22 +39,4 @@
     )
     modalInstance.result.then (url) ->
       $scope.uploadFileFromUrl(url)
-
-  $scope.uploadFileFromUrl = (url) ->
-    $http.get(url, responseType: "blob").then (response) ->
-      data = response.data
-      mimetype = data.type
-      filename = $scope.filenameFromUrl(url)
-      file = new File([data], filename, type: mimetype)
-      dummy = new FileUploader.FileItem($scope.uploader, {})
-      dummy.file = file
-      dummy._file = file
-      $scope.uploader.queue.push(dummy)
-
-  $scope.filenameFromUrl = (url) ->
-    url.substr(url.lastIndexOf('/') + 1)
-
-  $scope.test = ->
-    lol = $scope
-    debugger
 ]

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :files, only: [:index] do
     collection do
       post 'upload'
+      get  'file_info'
     end
   end
   resources :extensions, only: [:index]
