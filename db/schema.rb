@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20160410235346) do
   enable_extension "plpgsql"
 
   create_table "converted_files", force: :cascade do |t|
-    t.string   "file",                              null: false
+    t.string   "file"
     t.string   "state",        default: "uploaded", null: false
     t.integer  "user_id"
     t.integer  "extension_id"

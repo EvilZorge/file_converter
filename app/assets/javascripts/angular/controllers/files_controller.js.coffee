@@ -1,10 +1,14 @@
-@mainApp.controller 'FilesCtrl', ['$scope', '$http', 'FileUploader', '$uibModal', ($scope, $http, FileUploader, $uibModal) ->
+@mainApp.controller 'FilesCtrl', ['$scope', '$http', 'FileUploader', '$uibModal', '$interval', ($scope, $http, FileUploader, $uibModal, $interval) ->
   $scope.uploader = new FileUploader(url: '/files/upload')
 
   $scope.uploader.onCompleteItem = (item, response, status, headers) ->
     if status == 200
       item.file.status = response.file_upload.state
-      item.file.download_url = response.file_upload.download_url
+      item.file.id = response.file_upload.id
+      item.file.interval =
+        $interval (->
+          $scope.checkFileState item
+        ), 3000
     else if status == 406
       item.file.status = 'Error'
 
@@ -22,6 +26,14 @@
 
   $scope.uploadFile = ->
     document.getElementById('file-uploader').click()
+
+  $scope.checkFileState = (item) ->
+    $http.get('/files/check_state', params: { id: item.file.id })
+      .success (response) ->
+        console.log(response)
+        if response.state == 'converted'
+          item.file.status = 'converted'
+          $interval.cancel(item.file.interval)
 
   $scope.uploadFileFromUrl = (url) ->
     $http.get('/files/file_info', params: { url: url })

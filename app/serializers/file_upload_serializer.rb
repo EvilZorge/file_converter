@@ -1,7 +1,3 @@
 class FileUploadSerializer < ActiveModel::Serializer
-  attributes :state
-
-  def state
-    object.state
-  end
+  attributes :id, :state
 end

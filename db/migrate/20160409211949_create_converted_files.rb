@@ -1,7 +1,7 @@
 class CreateConvertedFiles < ActiveRecord::Migration
   def change
     create_table :converted_files do |t|
-      t.string :file, null: false
+      t.string :file
       t.string :state, null: false, default: 'uploaded'
       t.references :user
       t.references :extension

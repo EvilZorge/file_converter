@@ -44,6 +44,10 @@ body {
   margin-top: 15px;
 }
 
+.select-format {
+  width: 15%;
+}
+
 
 .st-sort-ascent:before{
   content: '\25B2';

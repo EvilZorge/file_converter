@@ -10,4 +10,9 @@ module FileService
       name: File.basename(URI.parse(url).path)
     }
   end
+
+  def check_state(id)
+    file = ConvertedFile.find_by_id(id)
+    file.state if file
+  end
 end
