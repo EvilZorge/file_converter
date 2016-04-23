@@ -1,5 +1,8 @@
-@mainApp.controller 'FilesCtrl', ['$scope', '$http', 'FileUploader', '$uibModal', '$interval', ($scope, $http, FileUploader, $uibModal, $interval) ->
+@mainApp.controller 'FilesCtrl', ['$scope', '$http', 'FileUploader', '$uibModal', '$interval', "$filter", ($scope, $http, FileUploader, $uibModal, $interval, $filter) ->
   $scope.uploader = new FileUploader(url: '/files/upload')
+  $scope.uploadTo =
+    dropbox: { upload: false }
+    google_drive: { upload: false }
 
   $scope.uploader.onCompleteItem = (item, response, status, headers) ->
     if status == 200
@@ -23,6 +26,17 @@
   $scope.uploader.onBeforeUploadItem = (item) ->
     item.formData.push(extension_to: item.file.extension_to)
     item.formData.push(external: JSON.stringify(item.external)) if item.external
+    uploadTo = $scope.filterUploadTo()
+    item.formData.push(upload_to: JSON.stringify(uploadTo)) if uploadTo.length != 0
+
+  $scope.filterUploadTo = ->
+    uploadTo = []
+    angular.forEach($scope.uploadTo, (external, key) ->
+      if external.upload && external.token
+        angular.merge(external, name: key)
+        uploadTo.push(external)
+    )
+    uploadTo
 
   $scope.uploadFile = ->
     document.getElementById('file-uploader').click()
@@ -31,7 +45,8 @@
     $http.get('/files/check_state', params: { id: item.file.id })
       .success (response) ->
         if response.state == 'converted'
-          item.file.status = 'converted'
+          item.file.status = response.state
+          item.file.download_url = response.download_url
           $interval.cancel(item.file.interval)
 
   $scope.uploadFileFromUrl = (url) ->

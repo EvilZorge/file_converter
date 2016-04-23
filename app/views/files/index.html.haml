@@ -14,7 +14,7 @@
     %div(class="col-md-8 col-md-offset-2 drag-drop" nv-file-drop uploader="uploader")
       %div.file-table(ng-repeat="item in uploader.queue")
         %div.file-table-cell.filename
-          {{ item.file.name }}
+          {{ item.file.name | cut:true:30 }}
         %div.file-table-cell.size
           {{ item.file.size | bytes }}
         %div.file-table-cell.select-format(ng-show="item.file.extensions")
@@ -25,5 +25,10 @@
           %a.btn.btn-success(href="{{item.file.download_url}}") Download
         %div.file-table-cell.remove-action
           %span(class="fa fa-times cursor-pointer" aria-hidden="true" ng-click="uploader.removeFromQueue(item)")
-    %div(class="col-md-2 col-md-offset-5")
-      %button.btn.btn-danger.convert-button(ng-click="uploader.uploadAll()" ng-hide="uploader.queue.length == 0" ng-disabled="uploader.queue.length == 0") Convert All
+    %div(ng-hide="uploader.queue.length == 0" ng-disabled="uploader.queue.length == 0")
+      %div(class="col-md-2 col-md-offset-5")
+        %dropbox-saver
+      %div(class="col-md-2 col-md-offset-5")
+        %google-drive-saver
+      %div(class="col-md-2 col-md-offset-5")
+        %button.btn.btn-danger.convert-button(ng-click="uploader.uploadAll()") Convert All

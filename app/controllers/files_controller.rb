@@ -3,7 +3,7 @@ class FilesController < ApplicationController
   end
 
   def upload
-    file = UploadService.upload(params[:file], params[:extension_to], current_user, params[:external]) if ExtensionService.check_extension(params[:file], params[:extension_to])
+    file = UploadService.upload(params, current_user) if ExtensionService.check_extension(params[:file], params[:extension_to])
     if file
       render json: file, serializer: FileUploadSerializer, status: :ok
     else
@@ -23,7 +23,7 @@ class FilesController < ApplicationController
   def check_state
     state = FileService.check_state(params[:id])
     if state
-      render json: { state: state }, status: :ok
+      render json: state, status: :ok
     else
       render json: { error: 'Cannot check file state' }, status: :not_acceptable
     end

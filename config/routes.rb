@@ -16,4 +16,5 @@ Rails.application.routes.draw do
       get 'files_history'
     end
   end
+  get '/dropbox_auth', to: redirect('/dropbox_auth.html')
 end

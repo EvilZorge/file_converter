@@ -2,7 +2,7 @@ class ConvertedFileSerializer < ActiveModel::Serializer
   attributes :download_url, :state, :format, :extension, :filename, :created_at
 
   def download_url
-    object.file.url
+    object.file.url if object.file.state == 'converted'
   end
 
   def extension
