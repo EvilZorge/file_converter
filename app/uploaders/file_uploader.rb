@@ -25,15 +25,14 @@ class FileUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
 
+  def download_from_url!(uri, headers)
+    processed_uri = process_uri(uri)
+    file = RemoteFile.new(processed_uri, headers)
+    raise CarrierWave::DownloadError, "trying to download a file which is not served over HTTP" unless file.http?
+    cache!(file)
+    self
+  end
 
-  # Add a white list of extensions which are allowed to be uploaded.
-  # For images you might use something like this:
-  # def extension_white_list
-  #   %w(jpg jpeg gif png)
-  # end
-
-  # Override the filename of the uploaded files:
-  # Avoid using model.id or version_name here, see uploader/store.rb for details.
   def filename
     original_filename
   end

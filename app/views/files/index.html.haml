@@ -15,8 +15,6 @@
       %div.file-table(ng-repeat="item in uploader.queue")
         %div.file-table-cell.filename
           {{ item.file.name }}
-        %div.file-table-cell.type
-          {{ item.file.type | cut:true:40:'...' }}
         %div.file-table-cell.size
           {{ item.file.size | bytes }}
         %div.file-table-cell.select-format(ng-show="item.file.extensions")

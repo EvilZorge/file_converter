@@ -22,7 +22,7 @@
 
   $scope.uploader.onBeforeUploadItem = (item) ->
     item.formData.push(extension_to: item.file.extension_to)
-    item.formData.push(uploaded_url: item.uploaded_url) if item.uploaded_url
+    item.formData.push(external: JSON.stringify(item.external)) if item.external
 
   $scope.uploadFile = ->
     document.getElementById('file-uploader').click()
@@ -30,7 +30,6 @@
   $scope.checkFileState = (item) ->
     $http.get('/files/check_state', params: { id: item.file.id })
       .success (response) ->
-        console.log(response)
         if response.state == 'converted'
           item.file.status = 'converted'
           $interval.cancel(item.file.interval)
@@ -39,7 +38,7 @@
     $http.get('/files/file_info', params: { url: url })
       .success (response) ->
         file = new File([response], response.name, response)
-        $scope.uploader.addToQueue(file, { uploaded_url: url})
+        $scope.uploader.addToQueue(file, { external: { url: url, from: 'url' }})
       .error (response) ->
 
   $scope.openUploadFromUrl = ->

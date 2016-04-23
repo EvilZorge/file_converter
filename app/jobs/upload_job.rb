@@ -1,8 +1,7 @@
 class UploadJob < ActiveJob::Base
-  # Set the Queue as Default
   queue_as :default
 
-  def perform(file_id, extension, url)
-    UploadService.upload_from_url(file_id, extension, url)
+  def perform(file_id, extension, external)
+    UploadService.upload_from_external_storage(file_id, extension, external)
   end
 end

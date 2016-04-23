@@ -7,5 +7,6 @@
     clientId : '326780241952-5kbkbo58evurqrrr1nhdoie8qjjpocsd.apps.googleusercontent.com',
     scopes   : ['https://www.googleapis.com/auth/drive'],
     locale   : 'en'
+    views    : ['DocsView().setIncludeFolders(true)']
   )
 ])

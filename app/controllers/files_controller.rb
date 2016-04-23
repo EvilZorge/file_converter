@@ -3,7 +3,7 @@ class FilesController < ApplicationController
   end
 
   def upload
-    file = UploadService.upload(params[:file], params[:extension_to], current_user, params[:uploaded_url]) if ExtensionService.check_extension(params[:file], params[:extension_to])
+    file = UploadService.upload(params[:file], params[:extension_to], current_user, params[:external]) if ExtensionService.check_extension(params[:file], params[:extension_to])
     if file
       render json: file, serializer: FileUploadSerializer, status: :ok
     else
