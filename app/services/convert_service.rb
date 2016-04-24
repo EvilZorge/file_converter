@@ -1,9 +1,16 @@
 module ConvertService
   module_function
 
-  def convert(file_id, extension, upload_to)
+  def convert(file_id, upload_to)
     file = ConvertedFile.find(file_id)
-    file.update(state: 'converted')
-    ExternalStorageService.upload(file, upload_to) if upload_to
+    converted_file =
+      case file.extension.format.name
+      when 'images'
+        ImageService.convert(file)
+      when 'documents'
+        DocumentService.convert(file)
+      end
+    converted_file.update(state: 'converted')
+    ExternalStorageService.upload(converted_file, upload_to) if upload_to
   end
 end

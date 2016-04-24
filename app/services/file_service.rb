@@ -15,6 +15,6 @@ module FileService
     file = ConvertedFile.find_by_id(id)
     return if file.nil?
     result = { state: file.state }
-    result.merge!(download_url: file.file.url) if file.state == 'converted'
+    file.state == 'converted' ? result.merge!(download_url: file.file.url) : result
   end
 end

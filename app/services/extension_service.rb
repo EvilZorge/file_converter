@@ -3,27 +3,26 @@ module ExtensionService
 
   def check_extension(file, extension_to)
     return if file.nil?
-    extension = file.content_type
-    extensions = prepare_extensions(extension)
+    content_type = file.content_type
+    extensions = prepare_extensions(content_type)
     return if extensions.empty?
     extensions.include?(extension_to)
   end
 
-  def prepare_extensions(extension)
-    from_extension = format_extension(extension)
-    find_extensions(from_extension)
+  def prepare_extensions(content_type)
+    extension = extension_from_content_type(content_type)
+    find_extensions(extension)
   end
 
-  def format_extension(extension)
-    return if extension.nil?
-    MIME::Types[extension].first.preferred_extension
+  def extension_from_content_type(content_type)
+    return if content_type.nil?
+    preferred_extension = MIME::Types[content_type].first.preferred_extension
+    Extension.find_by_name(preferred_extension)
   rescue
     nil
   end
 
-  def find_extensions(from_extension)
-    return if from_extension.nil?
-    extension = Extension.find_by_name(from_extension)
+  def find_extensions(extension)
     extension ? extension.converted_extensions.pluck(:name) : nil
   end
 end

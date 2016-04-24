@@ -22,7 +22,7 @@ module UploadService
     if external
       UploadJob.perform_later(convert_file.id, extension, external, upload_to)
     else
-      ConvertJob.perform_later(convert_file.id, extension, upload_to)
+      ConvertJob.perform_later(convert_file.id, upload_to)
     end
     convert_file
   end
@@ -40,7 +40,7 @@ module UploadService
     file = ConvertedFile.find(file_id)
     file.remote_file_url = url
     file.save
-    ConvertService.convert(file.id, extension, upload_to)
+    ConvertService.convert(file.id, upload_to)
   end
 
   def upload_from_google_drive(file_id, extension, url, token, upload_to)
@@ -48,6 +48,6 @@ module UploadService
     headers = { "Authorization" => "Bearer #{token}" }
     file.file = FileUploader.new.download_from_url!(url, headers)
     file.save
-    ConvertService.convert(file.id, extension, upload_to)
+    ConvertService.convert(file.id, upload_to)
   end
 end
