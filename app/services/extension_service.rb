@@ -16,10 +16,15 @@ module ExtensionService
 
   def extension_from_content_type(content_type)
     return if content_type.nil?
-    preferred_extension = MIME::Types[content_type].first.preferred_extension
+    preferred_extension = find_mime_type(content_type)
     Extension.find_by_name(preferred_extension)
   rescue
     nil
+  end
+
+  def find_mime_type(type)
+    return 'mp3' if type == 'audio/mp3'
+    MIME::Types[type].first.preferred_extension
   end
 
   def find_extensions(extension)
