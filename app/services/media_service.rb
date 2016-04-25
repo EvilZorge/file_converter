@@ -1,5 +1,6 @@
 module MediaService
   module_function
+
   def convert(file)
     dir_name = File.dirname(file.file.path)
     extension = file.extension.name

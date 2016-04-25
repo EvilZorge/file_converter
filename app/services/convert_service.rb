@@ -9,9 +9,7 @@ module ConvertService
         ImageService.convert(file)
       when 'documents'
         DocumentService.convert(file)
-      when 'videos'
-        MediaService.convert(file)
-      when 'audios'
+      when 'videos', 'audios'
         MediaService.convert(file)
       end
     converted_file.update(state: 'converted')
