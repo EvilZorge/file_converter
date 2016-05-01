@@ -14,10 +14,11 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require angular
-//= require angularjs-file-upload
 //= require angular-ui-bootstrap
 //= require angular-ui-bootstrap-tpls
 //= require angular-rails-templates
+//= require angularjs-file-upload
 //= require_tree ./templates
 //= require main_app
 //= require_tree .
+

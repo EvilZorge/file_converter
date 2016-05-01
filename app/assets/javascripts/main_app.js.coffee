@@ -1,4 +1,4 @@
-@mainApp = angular.module('mainApp', ['ui.bootstrap', 'angularFileUpload', 'templates', 'lk-google-picker', 'smart-table'])
+@mainApp = angular.module('mainApp', ['ui.bootstrap', 'angularFileUpload', 'templates', 'lk-google-picker', 'smart-table', 'ngAnimate', 'mgcrea.ngStrap', 'mgcrea.ngStrap.modal'])
 
 @mainApp.config(['lkGoogleSettingsProvider', (lkGoogleSettingsProvider) ->
   lkGoogleSettingsProvider.configure(

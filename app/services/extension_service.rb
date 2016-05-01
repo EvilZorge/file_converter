@@ -28,6 +28,6 @@ module ExtensionService
   end
 
   def find_extensions(extension)
-    extension ? extension.converted_extensions.pluck(:name) : nil
+    extension ? extension.converted_extensions.joins(:format).map { |e| { extension: e.name, format: e.format.name } } : nil
   end
 end

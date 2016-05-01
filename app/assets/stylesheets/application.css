@@ -23,6 +23,12 @@ body {
   display: none;
 }
 
+.alert.top {
+  position: absolute;
+  top: 70px;
+  width: 100%;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }

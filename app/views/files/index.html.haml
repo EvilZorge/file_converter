@@ -1,4 +1,4 @@
-%div.select-file-page(ng-controller="FilesCtrl")
+%div.select-file-page(ng-controller="FilesCtrl" uploader-callbacks bs-alert)
   %div.row
     %div.buttons-row(class="col-md-8 col-md-offset-2")
       %input#file-uploader(type="file" nv-file-select uploader="uploader" multiple)
@@ -8,7 +8,7 @@
       %google-drive-chooser
   %div.row
     %div(class="col-md-8 col-md-offset-2" style="text-align: center;")
-      %h3 or drag & drop files on this zone
+      %h5 or drag & drop files on this zone
 
   %div.row
     %div(class="col-md-8 col-md-offset-2 drag-drop" nv-file-drop uploader="uploader")
@@ -18,7 +18,7 @@
         %div.file-table-cell.size
           {{ item.file.size | bytes }}
         %div.file-table-cell.select-format(ng-show="item.file.extensions")
-          %select.form-control(ng-model="item.file.extension_to" ng-options="format for format in item.file.extensions")
+          %select.form-control(ng-model="item.file.extension_to" ng-options="extension.extension group by extension.format for extension in item.file.extensions")
         %div.file-table-cell.status(ng-show="item.file.status")
           {{ item.file.status }}
         %div.file-table-cell.download-action(ng-show="item.file.download_url")

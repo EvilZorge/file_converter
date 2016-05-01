@@ -20,4 +20,5 @@
           file = new File([response], response.name, response)
           $scope.uploader.addToQueue(file, { external: { url: url, from: 'dropbox' }})
         .error (response) ->
+          $scope.alert(response.error, 'danger')
 ]
