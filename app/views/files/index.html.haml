@@ -20,7 +20,9 @@
         %div.file-table-cell.select-format(ng-show="item.file.extensions")
           %select.form-control(ng-model="item.file.extension_to" ng-options="extension.extension group by extension.format for extension in item.file.extensions")
         %div.file-table-cell.status(ng-show="item.file.status")
-          {{ item.file.status }}
+          %span(ng-show="item.file.status == 'uploaded' || item.file.status == 'uploading'")
+            %img(src="/assets/converter_load.gif")
+          %span.text(ng-class="item.file.status") {{ item.file.status }}
         %div.file-table-cell.download-action(ng-show="item.file.download_url")
           %a.btn.btn-success(href="{{item.file.download_url}}") Download
         %div.file-table-cell.remove-action

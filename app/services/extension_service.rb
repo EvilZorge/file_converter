@@ -6,7 +6,7 @@ module ExtensionService
     content_type = file.content_type
     extensions = prepare_extensions(content_type)
     return if extensions.empty?
-    extensions.include?(extension_to)
+    extensions.any? { |extension| extension.has_value?(extension_to) }
   end
 
   def prepare_extensions(content_type)

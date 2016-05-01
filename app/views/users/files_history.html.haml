@@ -26,6 +26,7 @@
         %td {{file.format}}
         %td {{file.extension}}
         %td {{file.created_at | date }}
-        %td {{file.state}}
+        %td
+          %span.text(ng-class="file.state") {{file.state}}
         %td
           %a.btn.btn-success(href="{{file.download_url}}" ng-if="file.download_url") Download

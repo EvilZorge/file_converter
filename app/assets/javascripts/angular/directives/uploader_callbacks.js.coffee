@@ -17,13 +17,15 @@
         .success (response) ->
           item.file.extensions = response.extensions
           item.file.extension_to = response.extensions[0]
+          item.file.status = 'ready'
         .error (response) ->
           $scope.alert(response.error, 'danger')
           $scope.uploader.removeFromQueue(item)
 
     $scope.uploader.onBeforeUploadItem = (item) ->
-      item.formData.push(extension_to: item.file.extension_to)
+      item.formData.push(extension_to: item.file.extension_to.extension)
       item.formData.push(external: JSON.stringify(item.external)) if item.external
       uploadTo = $scope.filterUploadTo()
       item.formData.push(upload_to: JSON.stringify(uploadTo)) if uploadTo.length != 0
+      item.file.status = 'uploading'
 ]

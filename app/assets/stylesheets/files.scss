@@ -34,6 +34,7 @@
 
   &.status {
     width: 30px;
+    text-align: center;
   }
 
   &.download-action {
@@ -45,5 +46,34 @@
   &.remove-action {
     text-align: right;
     width: 15px;
+  }
+}
+
+.text {
+  font-weight: bold;
+  vertical-align: middle;
+  padding: 2px 3px;
+  margin-right: 5px;
+  font-size: 9px;
+  text-transform: uppercase;
+
+  &.ready {
+    border: solid 1px #277a9d;
+    color: #277a9d;
+  }
+
+  &.error {
+    border: solid 1px red;
+    color: red;
+  }
+
+  &.uploaded, &.uploading {
+    border: solid 1px #eda652;
+    color: #eda652;
+  }
+
+  &.converted {
+    border: solid 1px #279d6a;
+    color: #279d6a;
   }
 }
