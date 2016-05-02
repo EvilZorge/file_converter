@@ -4,7 +4,7 @@ class ExtensionsController < ApplicationController
     if extensions && extensions.present?
       render json: extensions,  status: :ok
     else
-      render json: { error: 'No extensions for this file' }, status: :not_acceptable
+      render json: { error: t('.error') }, status: :not_acceptable
     end
   end
 end

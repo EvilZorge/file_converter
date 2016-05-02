@@ -7,7 +7,7 @@ class FilesController < ApplicationController
     if file
       render json: file, serializer: FileUploadSerializer, status: :ok
     else
-      render json: { error: 'Cannot convert file' }, status: :not_acceptable
+      render json: { error: t('.error') }, status: :not_acceptable
     end
   end
 
@@ -16,7 +16,7 @@ class FilesController < ApplicationController
     if info
       render json: info, status: :ok
     else
-      render json: { error: 'Cannot get file info' }, status: :not_acceptable
+      render json: { error: t('.error') }, status: :not_acceptable
     end
   end
 
@@ -25,7 +25,7 @@ class FilesController < ApplicationController
     if state
       render json: state, status: :ok
     else
-      render json: { error: 'Cannot check file state' }, status: :not_acceptable
+      render json: { error: t('.error') }, status: :not_acceptable
     end
   end
 end

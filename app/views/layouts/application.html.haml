@@ -11,6 +11,7 @@
     = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/dropbox.js/0.10.3/dropbox.min.js'
     = csrf_meta_tags
   %body
+    %language-select
     = render 'layouts/header'
     %div.container
       = yield

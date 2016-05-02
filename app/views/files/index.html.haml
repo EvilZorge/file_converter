@@ -1,14 +1,16 @@
 %div.select-file-page(ng-controller="FilesCtrl" uploader-callbacks bs-alert)
   %div.row
+    %div(class="col-md-8 col-md-offset-2")
+      %h3(style="text-align: center;") {{ 'header' | translate }}
     %div.buttons-row(class="col-md-8 col-md-offset-2")
       %input#file-uploader(type="file" nv-file-select uploader="uploader" multiple)
-      %button.btn.btn-primary(ng-click="uploadFile()") Choose From Computer
-      %button.btn.btn-primary(ng-click="openUploadFromUrl()") Choose From Url
+      %button.btn.btn-primary(ng-click="uploadFile()") {{ 'computer' | translate }}
+      %button.btn.btn-primary(ng-click="openUploadFromUrl()") {{ 'url' | translate }}
       %dropbox-chooser
       %google-drive-chooser
   %div.row
     %div(class="col-md-8 col-md-offset-2" style="text-align: center;")
-      %h5 or drag & drop files on this zone
+      %h5 {{ 'dropzone' | translate }}
 
   %div.row
     %div(class="col-md-8 col-md-offset-2 drag-drop" nv-file-drop uploader="uploader")
@@ -24,7 +26,7 @@
             %img(src="/assets/converter_load.gif")
           %span.text(ng-class="item.file.status") {{ item.file.status }}
         %div.file-table-cell.download-action(ng-show="item.file.download_url")
-          %a.btn.btn-success(href="{{item.file.download_url}}") Download
+          %a.btn.btn-success(href="{{item.file.download_url}}") {{ 'download' | translate }}
         %div.file-table-cell.remove-action
           %span(class="fa fa-times cursor-pointer" aria-hidden="true" ng-click="uploader.removeFromQueue(item)")
     %div(ng-hide="uploader.queue.length == 0" ng-disabled="uploader.queue.length == 0")
@@ -33,4 +35,4 @@
       %div(class="col-md-2 col-md-offset-5")
         %google-drive-saver
       %div(class="col-md-2 col-md-offset-5")
-        %button.btn.btn-danger.convert-button(ng-click="uploader.uploadAll()") Convert All
+        %button.btn.btn-danger.convert-button(ng-click="uploader.uploadAll()") {{ 'convert' | translate }}

@@ -1,6 +1,6 @@
 @mainApp.directive "googleDriveSaver", ["$http", "lkGoogleSettings", ($http, lkGoogleSettings) ->
   restrict: 'E'
-  template: '<input type="checkbox" ng-checked="uploadTo.google_drive.upload" ng-click="saveToGoogleDrive()">Save to Google Drive</input>'
+  template: '<input type="checkbox" ng-checked="uploadTo.google_drive.upload" ng-click="saveToGoogleDrive()">{{ "google_drive_saver" | translate }}</input>'
   link: ($scope, $element, $attrs) ->
 
     $scope.saveToGoogleDrive = ->

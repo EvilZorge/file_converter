@@ -1,6 +1,6 @@
 @mainApp.directive "dropboxChooser", ["$http", ($http) ->
   restrict: 'E'
-  template: '<button class="btn btn-primary" ng-click="dropboxSelect()">Choose From Dropbox</button>'
+  template: '<button class="btn btn-primary" ng-click="dropboxSelect()"> {{ "dropbox_chooser" | translate }}</button>'
   link: ($scope, $element, $attrs) ->
 
     options =
@@ -15,7 +15,7 @@
       Dropbox.choose(options)
 
     $scope.uploadFileFromDropbox = (url) ->
-      $http.get('/files/file_info', params: { url: url })
+      $http.get('/files/file_info', params: { url: url, locale: $scope.selectedLang.key })
         .success (response) ->
           file = new File([response], response.name, response)
           $scope.uploader.addToQueue(file, { external: { url: url, from: 'dropbox' }})

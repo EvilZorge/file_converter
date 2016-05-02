@@ -26,5 +26,6 @@ module FileConverter
       #{config.root}/lib
       #{config.root}/services
     )
+    I18n.available_locales = [:en, :ru]
   end
 end

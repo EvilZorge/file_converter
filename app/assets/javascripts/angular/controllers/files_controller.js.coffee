@@ -17,7 +17,7 @@
     document.getElementById('file-uploader').click()
 
   $scope.checkFileState = (item) ->
-    $http.get('/files/check_state', params: { id: item.file.id })
+    $http.get('/files/check_state', params: { id: item.file.id, locale: $scope.selectedLang.key })
       .success (response) ->
         if response.state == 'converted'
           item.file.status = response.state
@@ -37,7 +37,7 @@
       $scope.uploadFileFromUrl(url)
 
   $scope.uploadFileFromUrl = (url) ->
-    $http.get('/files/file_info', params: { url: url })
+    $http.get('/files/file_info', params: { url: url, locale: $scope.selectedLang.key })
       .success (response) ->
         file = new File([response], response.name, response)
         $scope.uploader.addToQueue(file, { external: { url: url, from: 'url' }})

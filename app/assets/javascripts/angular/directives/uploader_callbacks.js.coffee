@@ -13,7 +13,7 @@
         item.file.status = 'Error'
 
     $scope.uploader.onAfterAddingFile = (item) ->
-      $http.get('/extensions', params: { format: item.file.type })
+      $http.get('/extensions', params: { format: item.file.type, locale: $scope.selectedLang.key })
         .success (response) ->
           item.file.extensions = response.extensions
           item.file.extension_to = response.extensions[0]

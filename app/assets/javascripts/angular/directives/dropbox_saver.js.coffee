@@ -1,6 +1,6 @@
 @mainApp.directive "dropboxSaver", ["$http", ($http) ->
   restrict: 'E'
-  template: '<input type="checkbox" ng-checked="uploadTo.dropbox.upload" ng-click="saveToDropbox()">Save to Dropbox </input>'
+  template: '<input type="checkbox" ng-checked="uploadTo.dropbox.upload" ng-click="saveToDropbox()">{{ "dropbox_saver" | translate }}</input>'
   link: ($scope, $element, $attrs) ->
 
     $scope.saveToDropbox = ->

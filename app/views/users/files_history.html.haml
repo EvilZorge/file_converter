@@ -2,23 +2,23 @@
   %table.table.table-striped(st-table="files")
     %thead
       %tr
-        %th(st-sort="filename") Filename
-        %th(st-sort="format") Format
-        %th(st-sort="extension") Extension
-        %th(st-sort="created_at" st-sort-default="reverse") Created Date
-        %th(st-sort="state") State
-        %th Download
+        %th(st-sort="filename") {{ 'filename' | translate }}
+        %th(st-sort="format") {{ 'format' | translate }}
+        %th(st-sort="extension") {{ 'extension' | translate }}
+        %th(st-sort="created_at" st-sort-default="reverse") {{ 'created_at' | translate }}
+        %th(st-sort="state") {{ 'state' | translate }}
+        %th
       %tr
         %th
-          %input.input-sm.form-control(st-search="filename" placeholder="search for filename" type="search")
+          %input.input-sm.form-control(st-search="filename" type="search")
         %th
-          %input.input-sm.form-control(st-search="format" placeholder="search for format" type="search")
+          %input.input-sm.form-control(st-search="format" type="search")
         %th
-          %input.input-sm.form-control(st-search="extension" placeholder="search for extension" type="search")
+          %input.input-sm.form-control(st-search="extension" type="search")
         %th
-          %input.input-sm.form-control(st-search="created_at" placeholder="search for created date" type="search")
+          %input.input-sm.form-control(st-search="created_at" type="search")
         %th
-          %input.input-sm.form-control(st-search="state" placeholder="search for state" type="search")
+          %input.input-sm.form-control(st-search="state" type="search")
         %th
     %tbody
       %tr(ng-repeat="file in files")
@@ -29,4 +29,4 @@
         %td
           %span.text(ng-class="file.state") {{file.state}}
         %td
-          %a.btn.btn-success(href="{{file.download_url}}" ng-if="file.download_url") Download
+          %a.btn.btn-success(href="{{file.download_url}}" ng-if="file.download_url") {{ 'download' | translate }}
