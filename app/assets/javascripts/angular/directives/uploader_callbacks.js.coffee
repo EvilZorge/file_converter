@@ -27,5 +27,6 @@
       item.formData.push(external: JSON.stringify(item.external)) if item.external
       uploadTo = $scope.filterUploadTo()
       item.formData.push(upload_to: JSON.stringify(uploadTo)) if uploadTo.length != 0
+      item.formData.push(email: $scope.email) if $scope.sendEmail && $scope.email
       item.file.status = 'uploading'
 ]

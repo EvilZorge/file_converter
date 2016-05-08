@@ -26,7 +26,7 @@
             %img(src="/assets/converter_load.gif")
           %span.text(ng-class="item.file.status") {{ item.file.status }}
         %div.file-table-cell.download-action(ng-show="item.file.download_url")
-          %a.btn.btn-success(href="{{item.file.download_url}}") {{ 'download' | translate }}
+          %a.btn.btn-success(ng-href="{{item.file.download_url}}" target="_blank") {{ 'download' | translate }}
         %div.file-table-cell.remove-action
           %span(class="fa fa-times cursor-pointer" aria-hidden="true" ng-click="uploader.removeFromQueue(item)")
     %div(ng-hide="uploader.queue.length == 0" ng-disabled="uploader.queue.length == 0")
@@ -34,5 +34,10 @@
         %dropbox-saver
       %div(class="col-md-2 col-md-offset-5")
         %google-drive-saver
+      %div(class="col-md-2 col-md-offset-5")
+        %input(type="checkbox" ng-checked="sendEmail" ng-click="sendNotification()") {{ 'send_email' | translate }}
+        %div(ng-show="sendEmail")
+          %span {{ 'email' | translate }}
+          %input(type="text" ng-model="email")
       %div(class="col-md-2 col-md-offset-5")
         %button.btn.btn-danger.convert-button(ng-click="uploader.uploadAll()") {{ 'convert' | translate }}

@@ -44,6 +44,9 @@
       .error (response) ->
         $scope.alert(response.error, 'danger')
 
+  $scope.sendNotification = ->
+    $scope.sendEmail = !$scope.sendEmail
+
   $scope.alert = (message, type) ->
     $alert(content: message, placement: 'top', type: type, show: true, duration: 5)
 ]

@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
 gem 'pg'
@@ -22,7 +21,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'angularjs-rails'
-gem 'angularjs-file-upload-rails', '~> 2.2.0'
+gem 'angularjs-file-upload-rails', github: 'evilzorge/angularjs-file-upload-rails'
 gem 'angular-ui-bootstrap-rails'
 gem 'angular-rails-templates'
 

@@ -30,10 +30,12 @@
     format: 'Format',
     extension: 'Extension',
     state: 'State',
-    created_at: 'Created At'
+    created_at: 'Created At',
+    send_email: 'Send email after convertation',
+    email: 'Enter your email'
   });
   $translateProvider.translations('ru', {
-    computer: 'Выбрать из компьютера',
+    computer: 'Выбрать с компьютера',
     dropbox_chooser: 'Выбрать из Dropbox',
     dropbox_saver: 'Сохранить в Dropbox',
     google_drive_chooser: 'Выбрать из Google Drive',
@@ -52,6 +54,8 @@
     extension: 'Расширение',
     state: 'Статус',
     created_at: 'Дата создания'
+    send_email: 'Прислать email после конвертации',
+    email: 'Введите свой email'
   });
   $translateProvider.preferredLanguage('ru');
 ])

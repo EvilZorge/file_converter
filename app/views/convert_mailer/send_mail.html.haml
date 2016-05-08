@@ -1,0 +1,7 @@
+%h1 Hi!
+- if @file.state == 'converted'
+  %div Your file was successfully converted
+  %a.btn.btn-success(href="#{file.url}") Download
+- else
+  %div Sorry, but we cannot convert your file
+
